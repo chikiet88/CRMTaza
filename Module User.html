@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" href="user.css">
+  <script>
+    var app = angular.module('myapp', []);
+    app.controller('User', function ($scope) {
+      $scope.showSidebar = false;
+      $scope.showCalendar = false;
+      $scope.showCare = false;
+      $scope.showCustomer = false;
+      $scope.showService = false;
+      $scope.showWareHouse = false;
+      $scope.ShowUser = false;
+      $scope.singleUser = {};
+      $scope.showProfile = false;
+      $scope.filterName = ''
+      $scope.filterDepartment = ''
+      $scope.filterAgency = ''
+      $scope.ListUser = [
+        { id: 1, name: "Nhân Viên 1", chucvu: "Giám Đốc", chinhanh: "Bình Thạnh", email: "user1@gmail.com", phone: "012345678", birthDay: "", status: "" },
+        { id: 2, name: "Nhân Viên 2", chucvu: "Trưởng Phòng", chinhanh: "Bình Thạnh", email: "user2@gmail.com", phone: "012345678", birthDay: "", status: "" },
+        { id: 3, name: "Nhân Viên 3", chucvu: "Nhân Viên", chinhanh: "Gò Vấp", email: "user3@gmail.com", phone: "012345678", birthDay: "", status: "" },
+        { id: 4, name: "Nhân Viên 4", chucvu: "Nhân Viên", chinhanh: "Gò Vấp", email: "user4@gmail.com", phone: "012345678", birthDay: "", status: "" },
+        { id: 5, name: "Nhân Viên 5", chucvu: "Nhân Viên", chinhanh: "Bình Thạnh", email: "user5@gmail.com", phone: "012345678", birthDay: "", status: "" },
+        { id: 6, name: "Nhân Viên 6", chucvu: "Nhân Viên", chinhanh: "Quận 10", email: "user6@gmail.com", phone: "012345678", birthDay: "", status: "" },
+        { id: 7, name: "Nhân Viên 7", chucvu: "Nhân Viên", chinhanh: "Bình Thạnh", email: "user7@gmail.com", phone: "012345678", birthDay: "", status: "" },
+        { id: 8, name: "Nhân Viên 8", chucvu: "Nhân Viên", chinhanh: "Quận 10", email: "user8@gmail.com", phone: "012345678", birthDay: "", status: "" },
+        { id: 9, name: "Nhân Viên 9", chucvu: "Nhân Viên", chinhanh: "Bình Thạnh", email: "user9@gmail.com", phone: "012345678", birthDay: "", status: "" },
+        { id: 10, name: "Nhân Viên 10", chucvu: "Nhân Viên", chinhanh: "Gò Vấp", email: "user10@gmail.com", phone: "012345678", birthDay: "", status: "" },
+        { id: 11, name: "Nhân Viên 11", chucvu: "Nhân Viên", chinhanh: "Quận 10", email: "user11@gmail.com", phone: "012345678", birthDay: "", status: "" },
+        { id: 12, name: "Nhân Viên 12", chucvu: "Nhân Viên", chinhanh: "Bình Thạnh", email: "user12@gmail.com", phone: "012345678", birthDay: "", status: "" },
+        { id: 13, name: "Nhân Viên 13", chucvu: "Nhân Viên", chinhanh: "Gò Vấp", email: "user13@gmail.com", phone: "012345678", birthDay: "", status: "" },
+        { id: 14, name: "Nhân Viên 14", chucvu: "Nhân Viên", chinhanh: "Quận 10", email: "user14@gmail.com", phone: "012345678", birthDay: "", status: "" },
+        { id: 15, name: "Nhân Viên 15", chucvu: "Nhân Viên", chinhanh: "Bình Thạnh", email: "user15@gmail.com", phone: "012345678", birthDay: "", status: "" },
+      ];
+
+      $scope.Adduser = function (data) {
+
+        var row = { id: $scope.ListUser.length + 1, name: data.Ten, chucvu: data.Chucvu, chinhanh: data.Chinhanh, email: data.email, phone: data.phone, birthDay: data.birthDay, status: data.status };
+        $scope.ListUser.push(row);
+        console.log($scope.ListUser);
+      };
+      $scope.XoaUser = function (data) {
+        $scope.ListUser.splice(data, 1);
+        console.log($scope.ListUser);
+      };
+      $scope.inforUser = function (item) {
+        $scope.showProfile = !$scope.showProfile;
+        $scope.singleUser = item
+        console.log($scope.ListUser)
+      }
+
+    });
+  </script>
+</head>
+
+<body ng-app="myapp" ng-controller="User" >
+
+  <!-- sidebar left menu -->
+
+  <div  >
+
+    
+    <div ng-show="menu"  style="width: 240px;height: 100%;position: fixed;top: 112px;left: 0px;background-color: white;padding: 30px 15px 5px 15px;">
+
+      <div class="container p-0">
+   
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link collapsed text-decoration-none" data-toggle="collapse" href="#collapseOne ">
+                <i class="far m-2 text-primary fa-calendar-alt"></i>
+                <span>Lịch hẹn</span>
+              </a>
+            </div>
+            <div id="collapseOne" class="collapse show" data-parent="#accordion">
+              <div class="p-0 card-body  ">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item m-2 text-primary " >Thông Tin Lịch Hẹn</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <a class="collapsed text-decoration-none card-link" data-toggle="collapse" href="#collapseTwo">
+                <i class="far m-2 text-primary menu-icon fa-heart"></i>
+                <span>Chăm sóc</span>
+            </a>
+            </div>
+            <div id="collapseTwo" class="collapse" data-parent="#accordion">
+              <div class="card-body p-0">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item m-1 text-primary" >Nhắc Lịch hẹn</li>
+                  <li class="list-group-item text-primary" >Complaint khách hàng</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <a class="collapsed text-decoration-none card-link" data-toggle="collapse" href="#collapseThree">
+                <i class="fas m-2 text-primary  menu-icon fa-users"></i>
+                <span>Khách hàng</span>
+              </a>
+            </div>
+            <div id="collapseThree" class="collapse" data-parent="#accordion">
+              <div class="card-body p-0">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item mx-1 text-primary" >Thông Tin Khách Hàng</li>
+                  <li class="list-group-item mx-1 text-primary" >Dịch Vụ</li>
+                  <li class="list-group-item mx-1 text-primary" >Điều Trị</li>
+                  <li class="list-group-item mx-1 text-primary" >Thanh Toán</li>
+                  <li class="list-group-item mx-1 text-primary" >Hình Ảnh</li>
+                  <li class="list-group-item mx-1 text-primary" >Lịch Sử</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        
+        <div class="card">
+          <div class="card-header ">
+            <a class="collapsed text-decoration-none card-link" data-toggle="collapse" href="#collapseFour">
+              <i class="far m-2 text-primary menu-icon fa-edit"></i>
+          <span>Dịch vụ</span>
+            </a>
+          </div>
+          <div id="collapseFour" class="collapse" data-parent="#accordion">
+            <div class="card-body p-0">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item mx-1 text-primary" >Nguyên Vật Liệu</li>
+                <li class="list-group-item mx-1 text-primary" >Dịch Vụ</li>
+                <li class="list-group-item mx-1 text-primary" >Combo Dịch Vụ</li>
+                <li class="list-group-item mx-1 text-primary" >Vật Tư Tiêu Hao</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <a class="collapsed text-decoration-none card-link" data-toggle="collapse" href="#collapseFive">
+              <i class="fas m-2 text-primary menu-icon fa-home"></i>
+              <span>Kho</span>
+            </a>
+          </div>
+          <div id="collapseFive" class="collapse" data-parent="#accordion">
+            <div class="card-body p-0">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item mx-1 text-primary" >Nhập Kho</li>
+                <li class="list-group-item mx-1 text-primary" >Xuất Kho</li>
+                <li class="list-group-item mx-1 text-primary" >Chuyển Kho</li>
+                <li class="list-group-item mx-1 text-primary" >Chốt Kho</li>
+                <li class="list-group-item mx-1 text-primary" >Order Nhà Cung Cấp</li>
+                <li class="list-group-item mx-1 text-primary" >Nguyên vật liệu</li>
+                <li class="list-group-item mx-1 text-primary" >Tồn kho</li>
+                <li class="list-group-item mx-1 text-primary" >Đơn vị tính</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <a class="collapsed text-decoration-none card-link" data-toggle="collapse" href="#collapseSix">
+                <i class="far m-2 text-primary menu-icon fa-user"></i>
+                <span>Nhân viên</span>
+              </a>
+            </div>
+            <div id="collapseSix" class="collapse" data-parent="#accordion">
+              <div class="card-body p-0 ">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item mx-1 text-primary" >Thông tin nhân viên</li>
+                  <li class="list-group-item mx-1 text-primary" >Phân quyền</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      
+    </div>
+     
+ <!-- header  -->
+    <div>
+      <nav class="navbar bg-primary navbar-expand navbar-dark fixed-top d-flex justify-content-between p-1">
+
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <img src="./img/Logotazasm.jpg" alt="logo" style="width:48px;height: 48px;">
+          </li>
+        </ul>
+        <ul class="navbar-nav d-flex align-items-center  ">
+          <i class="far fa-bell fa-2x text-light mr-3" ></i>
+          <li class="nav-item">
+            <a class="nav-link mr-3 rounded-circle bg-light" href="#" style="width: 48px;height: 48px;"
+             ></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container">
+
+     
+
+
+      <!-- topbar filter -->
+
+      <nav class="navbar fixed-top bg-light" style="top: 56px;">
+
+        <i ng-click="menu = !menu " class="fas fa-stream text-primary ml-2 "></i>
+        <div>
+          <button type="button" class="btn btn-info btn-sm bg-primary" data-toggle="modal" data-target="#myModal">New
+            user</button>
+        </div>
+
+        <form class="form-inline ml-5" action="/action_page.php ">
+          <select ng-model="filterDepartment" class="form-control">
+            <option value="">Phòng ban</option>
+            <option value="Giám Đốc">Giám Đốc</option>
+            <option value="Trưởng Phòng">Trưởng Phòng</option>
+            <option value="Nhân Viên">Nhân Viên</option>
+          </select>
+          <select ng-model="filterAgency" class="form-control ml-5 mr-5 ">
+            <option value="">Chi nhánh</option>
+            <option value="Gò Vấp">Gò Vấp</option>
+            <option value="Bình Thạnh">Bình Thạnh</option>
+            <option value="Quận 10">Quận 10</option>
+          </select>
+          <input class="form-control mr-5" ng-model="filterName" type="text" placeholder="Search">
+          <button class="btn btn-primary btn-sm mr-5 " type="submit">Search</button>
+        </form>
+      </nav>
+
+      <!-- popup add user  -->
+
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+
+            <div class="modal-header">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+
+            <div class="modal-body">
+              <form class="container">
+                <div class="form-group">
+                  <input class="form-control" placeholder="Họ Tên" ng-model="User.Ten">
+                </div>
+                <select ng-model="User.Chucvu" class="form-control form-group">
+                  <option value="">Phòng ban</option>
+                  <option value="Giám Đốc">Giám Đốc</option>
+                  <option value="Trưởng Phòng">Trưởng Phòng</option>
+                  <option value="Nhân Viên">Nhân Viên</option>
+                </select>
+
+                <select ng-model="User.Chinhanh" class="form-control ">
+                  <option value="">Chi nhánh</option>
+                  <option value="Gò Vấp">Gò Vấp</option>
+                  <option value="Bình Thạnh">Bình Thạnh</option>
+                  <option value="Quận 10">Quận 10</option>
+                </select>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" ng-click="Adduser(User)">Thêm Mới</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- table user -->
+
+
+      <div class="container position-absolute " style="top:200px">
+        <table ng-style="{'margin-left' : menu ? '120px' : '0'}" class="table table-bordered  table-hover ">
+          <thead class="bg-primary border">
+            <tr class="">
+              <th>
+              </th>
+              <th>
+                <i class='fas fa-xs fa-pencil-alt mr-1'></i>Họ tên
+              </th>
+              <th class="">
+                <i class='fas fa-xs fa-chalkboard-teacher'></i>Chức vụ
+              </th>
+              <th>
+                <i class='fa-xs fas fa-store-alt mr-1'></i>Chi nhánh
+              </th>
+              <th>
+                <i class="fas fa-sm fa-envelope"></i> Email
+              </th>
+              <th>
+                <i class='fas fa-xs fa-phone m-1'></i>Phone
+              </th>
+              <th>
+                <i class='fas fa-xs fa-birthday-cake m-1'></i>Birthday
+              </th>
+              <th>
+                <i class='fas fa-xs fa-pencil-alt m-1' ></i>Status
+              </th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr ng-repeat="item in ListUser | orderBy:'id'| filter:filterDepartment |filter:filterAgency |filter:filterName" >
+              <td>{{$index+1}}</td>
+              <td ng-click="inforUser(item)">{{item.name}}</td>
+              <td>{{item.chucvu}}</td>
+              <td>{{item.chinhanh}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.phone}}</td>
+              <td>{{item.birthDay}}</td>
+              <td>{{item.status}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- single user -->
+    <div class="bg-light  px-5 py-2"
+      style="position: fixed; width: 45% ; height: 100% ;top: 56px; right: 0;z-index: 2000; "
+      ng-show='showProfile'>
+      <div style=" display:flex;justify-content: space-around;flex-direction: column;align-items: center;">
+        <img src="./img/jhjh-1-768x1024.jpg" alt="avatar"
+          style="border: #00b8f1 1px solid;width: 250px;height: 250px;border-radius: 50%;background-color: whitesmoke;margin-bottom: 20px;">
+        {{singleUser.name}}
+      </div>
+      <br>
+      <br>
+      <span>Chức vụ:</span> {{singleUser.chucvu}}
+      <br>
+      <br>
+      <span>Chi nhánh:</span> {{singleUser.chinhanh}}
+    </div>
+  </div>
+
+  <!-- div overlay -->
+  <div class="overlay" ng-click="showProfile = !showProfile" ng-show='showProfile'>
+  </div>
+
+  </div>
+</body>
+
+</html>
